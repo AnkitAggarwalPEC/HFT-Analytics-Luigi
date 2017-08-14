@@ -3,9 +3,9 @@ import subscriber
 This is the base class for managing the queue based subcsriber like zeromq, apache kafka, rabbitmq
 """
 
-class queue_subscriber(BaseSubsriber):
+class queue_subscriber(subscriber.BaseSubscriber):
     QUEUE_TYPE = None
-    @classmethod
+
     def get_list_of_queues_supported():
         """
         This returns the list of the queue based supported
@@ -28,6 +28,24 @@ class queue_subscriber(BaseSubsriber):
     def peek(self):
         """
         This is to peek the top data present in the queue
+        """
+        raise NotImplementedError()
+
+    def full(self):
+        """
+        This is to check whether the queue is filled
+        """
+        raise NotImplementedError()
+
+    def register_publisher(self , publisher_object = None):
+        """
+        This to register the publisher with the subscriber
+        """
+        raise NotImplementedError()
+
+    def add_publisher(self , publisher_object = None):
+        """
+        This is add to the list of existing publisher
         """
         raise NotImplementedError()
 
