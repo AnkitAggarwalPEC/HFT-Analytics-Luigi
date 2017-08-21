@@ -3,7 +3,7 @@ import subscriber
 This is the base class for managing the queue based subcsriber like zeromq, apache kafka, rabbitmq
 """
 
-class queue_subscriber(subscriber.BaseSubscriber):
+class QueueSubscriber(subscriber.BaseSubscriber):
     QUEUE_TYPE = None
 
     def get_list_of_queues_supported():
@@ -48,11 +48,5 @@ class queue_subscriber(subscriber.BaseSubscriber):
         This is add to the list of existing publisher
         """
         raise NotImplementedError()
-
-
-
-
-
-
 
 
