@@ -1,16 +1,23 @@
+from abc import ABCMeta,abstractmethod,abstractproperty
+from six import with_metaclass
 
-class BaseFilter(object):
+class BaseFilter(with_metaclass(object , ABCMeta)):
     """
     Base class for any kind of filter information
     """
-    def get_filter():
+    @abstractmethod
+    def get_filter(self):
         raise NotImplementedError()
 
-    def set_filter():
+    @abstractmethod
+    def set_filter(self):
         raise NotImplementedError()
 
-    def reset_filter():
+    @abstractmethod
+    def reset_filters(self):
         raise NotImplementedError()
 
-    def add_filter():
+    @abstractmethod
+    def add_filter(self):
         raise NotImplementedError()
+
