@@ -16,19 +16,27 @@ class PublisherOfDifferentType(Exception):
     This is raised when there is mismatch of publisher type
     """
     pass
-
+class FilterDictNotSane(Exception):
+    """
+    Filter object dict is not sane
+    """
+    pass
 class ZMOSubscriber(queue_subscriber.QueueSubscriber):
     QUEUE_TYPE =  ZM_QUEUE
-    def __init__(self , publisher_object = None , filter_object = None):
+    def __init__(self , publishers = None , filter_dict = None):
         """
         This publisher belong to zeromq publisher
         """
-        self.publisher_object = publisher_object
+        self.publisher_object = publishers
         self._publisher_object_list = []
+        self._filter_object_list = []
         if publisher_object is not None:
             self._publisher_object_list.append(publisher_object)
-        self.filter_object =  filter_object
+        if filter_dict is not None and type(filter_object) != 'dict':
+            raise FilterDictNotSane("Filter dict must either None or Dict type")
+        self.filter_dict = filter_dict
 
+    def _apply_filter(self , filter_instance):
 
     def insert(self , data_to_be_inserted = None , index_list = None):
         """

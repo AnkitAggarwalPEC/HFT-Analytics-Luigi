@@ -7,6 +7,7 @@ class ZMQFilter(filters.BaseFilter):
         self.topic_filters = topic_filters
         self.should_contain = should_contain
         self.should_not_contain = should_not_contain
+        self._filter_reseted = False
 
     def get_filter(self):
         return dict({"topic_filter" :  self.topic_filters , "should_contain" : self.should_contain , "should_not_contain" : self.should_not_contain})
@@ -15,6 +16,7 @@ class ZMQFilter(filters.BaseFilter):
         self.topic_filters = None
         self.should_contain = None
         self.should_not_contain = None
+        self._filter_reseted = True
 
     def _set_topic_filter(self , filter_topic = None):
         pass
