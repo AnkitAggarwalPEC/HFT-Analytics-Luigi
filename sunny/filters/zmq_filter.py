@@ -19,19 +19,19 @@ class ZMQFilter(filters.BaseFilter):
         self._filter_reseted = True
 
     def _set_topic_filter(self , filter_topic = None):
-        pass
+        self.topic_filters = filter_topic
 
     def _get_topic_filters(self):
         return self.topic_filters
 
     def _set_should_contain(self , should_contain =  None):
-        pass
+        self.should_contain = should_contain
 
     def _get_should_contain(self):
         return should_contain
 
     def _set_should_not_contain(self, should_not_contain = None):
-        pass
+        self.should_not_contain = should_not_contain
 
     def _get_should_not_contain(self):
         return self.should_not_contain
