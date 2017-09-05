@@ -41,7 +41,7 @@ class FilePublisher(BasePubliser):
     """
     An implementation to get the data from the File
     """
-    def __init__(self , columns =  None ):
+    def __init__(self , columns =  None):
         self.TYPE_OF_PUBLISHER = "CSV_FILE"
         self.file_name = None
         self.columns = columns
