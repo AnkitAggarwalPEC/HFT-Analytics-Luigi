@@ -95,3 +95,35 @@ class FileSystemSink(Sink):
         return self.fs.remove(self.path)
 
 
+class AtomicLocalFile(io.BufferedWriter):
+    """
+    This is used to create a temporary file in the local filesystem before moving to the final destination
+    """
+    def __init__(self , path):
+        self.__tmp_path = self.generate_tmp_path(path)
+        self.path = path
+
+
+    def close(self):
+        super(AtomicLocalFile,self).close()
+        self.move_to_final_destination()
+
+    def generate_tmp_path(self , path):
+        return os.path.join(tempfile.gettempdir(), 'sunny-tmp-%09d' % random.randrange(0, 1e10))
+
+    def move_to_final_destination():
+        raise NotImplementedError()
+
+    def __del__():
+        if os.exists.path(self.path):
+            os.remove(self.__tmp_path)
+
+    def __exit__(self , exception_type , exception , trace_back):
+        """
+        This is called when the context manager doesn't safely exists
+        """
+        if exception_type:
+            return ;
+        return super(AtomicLocalFile , self).__exit__(exception_type , exception , trace_back)
+
+
