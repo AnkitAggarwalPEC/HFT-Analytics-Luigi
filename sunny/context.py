@@ -29,6 +29,7 @@ class StreamingContext(object):
     def _default_batch_duration(self):
         if file_utils.check_if_file_present(CONFIG_PATH):
             # TODO:READ THE CONFIG FILE FOR THE TIME
+            pass
         else:
             """
             return the default 5 seconds
@@ -49,6 +50,7 @@ class StreamingContext(object):
         @param recreate_if_dead:To reintialize the context object
         """
         #TODO:Implement a way to get the running context
+        pass
 
     def run_till_termination_or_timeout(self , timeout = None , data_points = None):
         """
@@ -102,8 +104,6 @@ class StreamingContext(object):
         This will add the another streaming to the list of the streamers writing to sink
         """
         pass
-
-
 
 
 
