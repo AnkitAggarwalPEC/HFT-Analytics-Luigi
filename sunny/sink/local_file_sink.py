@@ -71,6 +71,23 @@ class LocalFileSink(FileSystemSink):
             except OSError:
                 pass
     def open(self ,mode = 'r'):
+        """
+        This is used to open the file for read/write purpose
+        """
+        mode = mode.replace('b' , '').replace('t' , '')
+        if mode == 'w':
+            self.makedirs()
+            #TODO:Create a writer object
+        elif mode == 'r':
+            #TODO:Create a reader object
+            pass
+    def move(self , new_path , raise_if_exists = False):
+        self.fs.move(self.path , new_path , raise_if_exists)
 
+    def remove(self):
+        self.fs.remove(self.path)
 
+    def __del__(self):
+        if self.is_tmp and self.exists():
+            self.remove()
 
