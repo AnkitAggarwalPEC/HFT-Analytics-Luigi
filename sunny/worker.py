@@ -37,7 +37,7 @@ class Worker(object):
     Worker object that will handle the task submitted to it
     """
 
-    def  add(self , task , multiprocess = False):
+    def add(self , task , multiprocess = False):
         """
         This will add the task submitted to a queue depending upon the multiprocess or not
         """
